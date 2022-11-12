@@ -1,0 +1,10 @@
+.game {
+    width: 450px;
+    height: 100vh;
+    background-image: url(../../images/doodle-kitten__background.png);
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    margin: 0 auto;
+}

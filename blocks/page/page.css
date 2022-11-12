@@ -1,0 +1,10 @@
+.page {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+    font-family: "Raleway", 'Arial';
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

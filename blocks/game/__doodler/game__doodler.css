@@ -1,0 +1,11 @@
+.game__doodler {
+    width: 60px;
+    height: 85px;
+    background-color: none;
+    position: absolute;
+    background-image: url(../../../images/lysik.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    z-index: 1;
+}
