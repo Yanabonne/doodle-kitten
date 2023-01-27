@@ -1,0 +1,5 @@
+.popup__link {
+    text-decoration: underline;
+    color: black;
+    cursor: pointer;
+}

@@ -5,19 +5,34 @@ let isGameOver = false;
 let platforms = [];
 let upTimerId;
 let downTimerId;
+let rightTimerId;
+let leftTimerId;
+let platformTimerId;
 let isJumping = true;
 let isGoingLeft = false;
 let isGoingRight = false;
 let score = 0;
+let scoreBest = 0;
 
 let gameHeight = Number(getComputedStyle(game).height.replace('px',''));
 let gameWidth = Number(getComputedStyle(game).width.replace('px',''));
 let platformWidth = (85/450 * gameWidth);
 let platformHeight = (25/85 * platformWidth);
 let doodlerWidth = (60/450 * gameWidth);
-let platformCount = 6;
+const platformCount = 6;
 let startPoint = (1/3 * gameWidth);
 let doodlerBottomSpace = startPoint;
+let platformGap = gameHeight / platformCount;
+
+const popupStart = document.querySelector('#popup_start');
+const buttonStart = popupStart.querySelector('#popup-button_start');
+const linkToRules = popupStart.querySelector('#popup_link-to-rules')
+
+const popupGameOver = document.querySelector('#popup_game-over');
+const buttonGameOver = popupGameOver.querySelector('#popup-button_game-over');
+
+const popupRules = document.querySelector('#popup_rules');
+const linkToStart = popupRules.querySelector('.popup__link');
 
 class Platform {
     constructor(newPlatformBottom) {
@@ -33,6 +48,14 @@ class Platform {
     }
 }
 
+function hidePopup (popup) {
+    popup.classList.add('popup_inactive');
+}
+
+function showPopup (popup) {
+    popup.classList.remove('popup_inactive');
+}
+
 function createDoodler () {
     game.appendChild(doodler);
     doodler.classList.add('game__doodler');
@@ -43,7 +66,6 @@ function createDoodler () {
 
 function createPlatforms() {
     for (let i = 0; i < platformCount; i++) {
-        let platformGap = gameHeight / platformCount;
         let newPlatformBottom = (1/6 * gameHeight) + i * platformGap;
         let newPlatform = new Platform(newPlatformBottom);
         platforms.push(newPlatform);
@@ -153,9 +175,13 @@ function controlDoodleArrows(e) {
         moveLeft();
     } else if (e.key === "ArrowRight") {
         moveRight();
-    } else if (e.key === "ArrowUp") {
-
     }
+}
+
+function fillScores () {
+    if (score > scoreBest) {scoreBest = score};
+    popupGameOver.querySelector('#score').textContent = `Ваш счёт: ${score}`;
+    popupGameOver.querySelector('#best-score').textContent = `Ваш лучший счёт: ${scoreBest}`;
 }
 
 function gameOver() {
@@ -163,21 +189,40 @@ function gameOver() {
     while(game.firstChild) {
        game.removeChild(game.firstChild);
     };
-    game.innerHTML = score;
     clearInterval(upTimerId);
     clearInterval(downTimerId);
     clearInterval(leftTimerId);
     clearInterval(rightTimerId);
+    clearInterval(platformTimerId)
+    fillScores();
+    showPopup(popupGameOver);
+    platforms = [];
+    score = 0;
 }
 
 function startGame() {
     if (!isGameOver) {
+        hidePopup(popupStart);
         createPlatforms();
         createDoodler();
-        setInterval(movePlatforms, 30);
+        platformTimerId = setInterval(movePlatforms, 30);
         jump();
         document.addEventListener('keyup',controlDoodleArrows);
     };
 }
 
-startGame();
+buttonStart.addEventListener('click', startGame);
+buttonGameOver.addEventListener('click', function () {
+    hidePopup(popupGameOver);
+    showPopup(popupStart);
+    isGameOver = false;
+});
+
+linkToRules.addEventListener('click', function () {
+    hidePopup(popupStart);
+    showPopup(popupRules);
+});
+linkToStart.addEventListener('click', function () {
+    hidePopup(popupRules);
+    showPopup(popupStart);
+})
