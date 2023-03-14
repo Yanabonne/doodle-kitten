@@ -1,3 +1,5 @@
+import "./pages/index.css";
+
 const game = document.querySelector(".game");
 const doodler = document.createElement("div");
 let doodlerLeftSpace = 50;
