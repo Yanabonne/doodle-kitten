@@ -27,4 +27,6 @@ https://yanabonne.github.io/doodle-kitten/
 
 **Команда для сборки и запуска проекта**
 
-_npm run deploy_
+```
+npm run deploy
+```
