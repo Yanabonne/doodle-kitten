@@ -24,3 +24,7 @@
 **:cat2: Ссылка на проект**
 
 https://yanabonne.github.io/doodle-kitten/
+
+**Команда для сборки и запуска проекта**
+
+_npm run deploy_
