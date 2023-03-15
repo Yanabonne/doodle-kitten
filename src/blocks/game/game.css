@@ -1,10 +1,17 @@
 .game {
-    width: 450px;
-    height: 100vh;
-    background-image: url(../../images/doodle-kitten__background.png);
-    position: relative;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center bottom;
-    margin: 0 auto;
+  width: 450px;
+  height: 100vh;
+  background-image: url(../../images/doodle-kitten__background.png);
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center bottom;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 470px) {
+  .game {
+    width: 100vw;
+  }
 }

@@ -21,8 +21,8 @@ let gameWidth = Number(getComputedStyle(game).width.replace("px", ""));
 let platformWidth = (85 / 450) * gameWidth;
 let platformHeight = (25 / 85) * platformWidth;
 let doodlerWidth = (60 / 450) * gameWidth;
-const platformCount = 6;
 let startPoint = (1 / 3) * gameWidth;
+const platformCount = Math.floor(gameHeight / startPoint);
 let doodlerBottomSpace = startPoint;
 let platformGap = gameHeight / platformCount;
 

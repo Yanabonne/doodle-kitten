@@ -1,11 +1,18 @@
 .game__doodler {
-    width: 60px;
-    height: 85px;
-    background-color: none;
-    position: absolute;
-    background-image: url(../../../images/lysik.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    z-index: 1;
+  width: 60px;
+  height: 85px;
+  background-color: none;
+  position: absolute;
+  background-image: url(../../../images/lysik.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  z-index: 1;
+}
+
+@media screen and (max-width: 470px) {
+  .game__doodler {
+    width: calc(100vw * 60 / 450);
+    height: calc(100vw * 85 / 450);
+  }
 }
