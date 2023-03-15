@@ -1,0 +1,8 @@
+.game__right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: calc(100% / 2);
+  z-index: 1;
+}
