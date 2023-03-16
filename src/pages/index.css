@@ -4,11 +4,11 @@
 @import url(../blocks/page/page.css);
 
 @import url(../blocks/game/game.css);
-@import url(../blocks/game/__left/game__left.css);
-@import url(../blocks/game/__right/game__right.css);
-@import url(../blocks/game/__disabled/game__disabled.css);
 @import url(../blocks/game/__doodler/game__doodler.css);
 @import url(../blocks/game/__platform/game__platform.css);
+
+@import url(../blocks/controller/__left/controller__left.css);
+@import url(../blocks/controller/__right/controller__right.css);
 
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_inactive/popup_inactive.css);

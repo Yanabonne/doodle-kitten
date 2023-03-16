@@ -1,8 +1,8 @@
 import "./pages/index.css";
 
 const game = document.querySelector(".game");
-const leftController = document.querySelector(".game__left");
-const rightController = document.querySelector(".game__right");
+const leftController = document.querySelector(".controller__left");
+const rightController = document.querySelector(".controller__right");
 const doodler = document.createElement("div");
 let doodlerLeftSpace = 50;
 let isGameOver = false;
@@ -202,8 +202,6 @@ function fillScores() {
 
 function gameOver() {
   isGameOver = true;
-  leftController.classList.add("game__disabled");
-  rightController.classList.add("game__disabled");
   while (game.firstChild) {
     game.removeChild(game.firstChild);
   }
@@ -214,14 +212,18 @@ function gameOver() {
   clearInterval(platformTimerId);
   fillScores();
   showPopup(popupGameOver);
+  isGoingRight = false;
+  isGoingLeft = false;
   platforms = [];
   score = 0;
+  leftController.removeEventListener("click", moveLeft);
+  rightController.removeEventListener("click", moveRight);
 }
 
 function startGame() {
   if (!isGameOver) {
-    leftController.classList.remove("game__disabled");
-    rightController.classList.remove("game__disabled");
+    leftController.addEventListener("click", moveLeft);
+    rightController.addEventListener("click", moveRight);
     hidePopup(popupStart);
     createPlatforms();
     createDoodler();
@@ -236,13 +238,6 @@ buttonGameOver.addEventListener("click", function () {
   hidePopup(popupGameOver);
   showPopup(popupStart);
   isGameOver = false;
-});
-
-leftController.addEventListener("click", function () {
-  moveLeft();
-});
-rightController.addEventListener("click", function () {
-  moveRight();
 });
 
 linkToRules.addEventListener("click", function () {
