@@ -30,5 +30,5 @@ https://yanabonne.github.io/doodle-kitten/
 **:cat2: Команда для сборки и запуска проекта**
 
 ```
-npm run deploy
+npm run dev
 ```
